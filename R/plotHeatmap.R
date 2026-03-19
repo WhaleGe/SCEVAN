@@ -595,8 +595,9 @@ plotTSNE <- function(raw_count_mtx, CNAmat , filt_genes, tum_cells, clustersSub,
       error = function(e){ 
         #Rtsne(t(as.matrix(CNAmat[,tum_cells])), perplexity = 15)
         mtxplot <- t(as.matrix(CNAmat[,names(clustersSub)]))
-        Rtsne(mtxplot, perplexity = floor((nrow(mtxplot) - 1) / 3))
+        res <- Rtsne(mtxplot, perplexity = floor((nrow(mtxplot) - 1) / 3))
         rm(mtxplot)
+        return(res)
       }
     )
     
