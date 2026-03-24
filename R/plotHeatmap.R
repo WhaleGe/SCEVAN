@@ -529,8 +529,8 @@ plotSubclones <- function(chr_lab, mtx_CNA, hcc, n_subclones, samp, par_cores=20
   }
   
   
-  png(file.path(output_dir, paste0(samp, "heatmap_subclones.png")), height=h*250, width=4000, res=100)
-  
+  #png(file.path(output_dir, paste0(samp, "heatmap_subclones.png")), height=h*250, width=4000, res=100)
+  pdf(file.path(output_dir, paste0(samp, "heatmap_subclones.pdf")), height=h*1.5, width=10)
   heatmap.3(t(mtx_CNA),dendrogram="r", hcr = hcc,
             ColSideColors=chr1,RowSideColors=cells,Colv=NA, Rowv=TRUE,
             notecol="black",col=my_palette,breaks=col_breaks, key=TRUE, chr_lab = chr_lab,
@@ -877,7 +877,8 @@ plotCNAline <- function(segmList, segmListSpec, samp, nSub, colors_samp = NULL, 
   if(length(colors_samp)==0) colors_samp <- colorRampPalette(RColorBrewer::brewer.pal(n = 8, name = "Paired")[1:nSub])
   cells <- rbind(colors_samp(nSub),colors_samp(nSub))
   
-  png(file.path(output_dir, paste0(samp, "consensus.png")), height=750, width=2850, res=180)
+  #png(file.path(output_dir, paste0(samp, "consensus.png")), height=750, width=2850, res=180)
+  pdf(file.path(output_dir, paste0(samp, "consensus.pdf")), height=7.5, width=28.5)
   heatmap.3(t(do.call(cbind,lapply(df, function(x) x$Mean))),Rowv = FALSE, Colv = FALSE, dendrogram = "none", chr_lab = 1:22, keysize=1, density.info="none", trace="none",
             cexRow=3.0,cexCol=2.0,cex.main=3.0,cex.lab=3.0,
             ColSideColors=chr1,
@@ -1078,6 +1079,7 @@ plotOncoHeat <- function(oncoHeat, nSub, samp, annotdf, mycolors, organism = "hu
   w = grid::convertWidth(sum(plotHeatmapOncoHeat$gtable$widths), "in", TRUE)
   
   ggplot2::ggsave(file.path(output_dir, paste0(samp, "OncoHeat.png")), device = "png", plotHeatmapOncoHeat$gtable, width=w, height=h, dpi=300)
+  ggplot2::ggsave(file.path(output_dir, paste0(samp, "OncoHeat.pdf")), device = "pdf", plotHeatmapOncoHeat$gtable, width=w, height=h)
   dev.off()
   
   #TODO
