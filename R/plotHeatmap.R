@@ -1029,7 +1029,7 @@ plotConsensusCNA <- function(samp, nSub, organism = "human", pathOutput = "./out
   df_VEGAchr$y[is.na(df_VEGAchr$y)] <- 0
   
   #png(file.path(pathOutput, paste0(samp, "consensus.png")), height=750, width=2850, res=180)
-  pdf(file.path(output_dir, paste0(samp, "consensus.pdf")), height=7.5, width=28.5)
+  pdf(file.path(pathOutput, paste0(samp, "consensus.pdf")), height=7.5, width=28.5)
   heatmap.3(t(do.call(cbind,lapply(df, function(x) x$Mean))),Rowv = FALSE, Colv = FALSE, dendrogram = "none", chr_lab = df_VEGAchr$y, keysize=1, density.info="none", trace="none",
             cexRow=3.0,cexCol=2.0,cex.main=3.0,cex.lab=3.0,
             ColSideColors=chr1,
