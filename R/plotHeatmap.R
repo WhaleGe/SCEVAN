@@ -1202,8 +1202,8 @@ plotCloneTree <- function(sample,res_subclones, output_dir = "./output"){
       
       #TODO
       
-      png(file.path(output_dir, paste0(sample, "CloneTree.png")), height=1650, width=1650, res=200)
-      
+      #png(file.path(output_dir, paste0(sample, "CloneTree.png")), height=1650, width=1650, res=200)
+      pdf(file.path(output_dir, paste0(sample, "CloneTree.pdf")), height=16.5, width=16.5)
       pp <- ggtree(tree, layout="daylight", size = 2) + 
         ggtitle(paste0(sample,"-Clone Tree")) + 
         geom_tiplab(aes(fill=group), geom = "label", size = 4) +
@@ -1422,8 +1422,8 @@ plotCloneTreeNew <- function(sample, res_subclones = 0, CLONAL_MULTI = FALSE, an
       
       colors <- colors_samp(res_subclones$n_subclones)
       
-      png(file.path(output_dir, paste0(analysisName, "CloneTree.png")), height=1650, width=1650, res=200)
-      
+      #png(file.path(output_dir, paste0(analysisName, "CloneTree.png")), height=1650, width=1650, res=200)
+      pdf(file.path(output_dir, paste0(analysisName, "CloneTree.pdf")), height=16.5, width=16.5)
       pp <- ggtree(tree, layout="daylight", size = 2) + 
         ggtitle(paste0(analysisName,"-Clone Tree")) + 
         geom_tiplab(aes(fill=group), geom = "label", size = 4) +
